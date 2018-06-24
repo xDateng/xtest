@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div,p{
+			width:100px;height:50px;border:1px solid #333;margin:10px;
+		}
+		</style>
+		
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<p></p>
+		<p></p>
+	</body>
+	<script type="text/javascript">
+//传统法：
+// 		1.获得素有元素
+// 		var divs = document.getElementsByTagName('div');
+// 		var ps = document.getElementsByTagName('p');
+// 		2.遍历添加样式
+// 		for(var i=0;i<divs.length;i++){
+// 			divs[i].style.backgroundColor='pink';
+// 		};
+// 		for(var i=0;i<ps.length;i++){
+// 			ps[i].style.backgroundColor='pink';
+// 		}
+		
+//函数化：
+		var g=function (tag) {
+			return document.getElementsByTagName(tag);
+		}
+		var divs=g("div");
+		var ps=g("p");
+		var each=function(arr){
+			for(var i=0;i<arr.length;i++){
+				arr[i].style.backgroundColor="pink";
+			}
+		};
+		each(divs);
+		each(ps);
+		
+// 如果你想遍历一个数组，你想对这个数组做什么事情？
+		var arr=[1,4,5,4,5,6];
+// 求和
+		var sum=0;
+		for(var i=0;i<arr.length;i++){
+			sum+=arr[i];
+		}
+		console.log(sum);
+// 求最大值
+		var max=arr[0];
+		for(var i=0;i<arr.length;i++){
+		if(arr[i]>max){
+			max=arr[i];
+		}
+	}
+	console.log(max);
+		
+//求最小值
+			var min=arr[0];
+			for(var i=0;i<arr.length;i++){
+			if(arr[i]<min){
+				min=arr[i];
+			}
+		}
+		console.log(min);
+//查找"3"" 
+		var find3=-1;
+		for(var i=0;i<arr.length;i++){
+		if(arr[i]===3){
+			find3=i+1;
+		}
+	}
+		console.log(find3);
+		
+// 函数封装：【把相同的东西封装到函数里面】
+// 定义一个函数，把数组和函数作为参数传进去，写这个函数对公共部分/////////////////
+// 求和：
+		var each=function(arr,fn){
+			for(var i=0;i<arr.length;i++){
+				fn(arr[i]);
+			}
+		};
+		each(arr,function(v){
+			sum+=v;
+			});
+// 求最大值
+		var max=arr[0];
+		each(arr,function(v){
+			if(max<v){
+				max=v;
+			}
+			});
+// 求最小值
+		var min=arr[0];
+		each(arr,function(v){
+			if(min>v);
+			min=v;
+		})
+//查找“3”
+		var find1=-1;
+		each(arr,function(v){
+			if(v==3){
+				find1=i+1;
+			}
+		})
+	</script>
+</html>
